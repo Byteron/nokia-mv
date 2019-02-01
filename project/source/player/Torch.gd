@@ -1,6 +1,6 @@
 extends Node2D
 
-const timeout = 0.3
+const timeout = 0.4
 
 var time = 0
 

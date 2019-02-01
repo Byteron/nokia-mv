@@ -1,13 +1,13 @@
 class_name Player extends KinematicBody2D
 
-const GRAVITY = 180
+const GRAVITY = 196
 const UP = Vector2(0, -1)
 const DOWN = Vector2(0, 1)
 
-const SNEAK_SPEED = 10
-const WALK_SPEED = 30
-const RUN_SPEED = 60
-const JUMP_FORCE = 80
+const SNEAK_SPEED = 12
+const WALK_SPEED = 32
+const RUN_SPEED = 64
+const JUMP_FORCE = 96
 
 var direction = Vector2()
 var motion = Vector2()
