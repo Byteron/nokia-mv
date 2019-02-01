@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Nokia MV"
+run/main_scene="res://source/test/Test.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -32,14 +33,38 @@ Global="*res://source/global/Global.tscn"
 window/size/width=84
 window/size/height=48
 window/size/resizable=false
-window/size/test_width=336
-window/size/test_height=192
+window/size/test_width=672
+window/size/test_height=384
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
 
 [rendering]
 
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 quality/2d/use_pixel_snap=true
+environment/default_clear_color=Color( 0.262745, 0.321569, 0.239216, 1 )
 environment/default_environment="res://default_env.tres"
