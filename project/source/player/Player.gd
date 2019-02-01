@@ -15,10 +15,16 @@ var motion = Vector2()
 var facing = 1
 var dashing = false
 
+export(float, 0, 1) var hope = 1.0
+
 onready var anim = $AnimationPlayer
 onready var skin = $Skin
 
 onready var torch = $Torch
+
+func _ready():
+	Global.player = self
+	update_hope()
 
 func _process(delta):
 	update_motion(delta)
@@ -104,6 +110,13 @@ func fall(delta):
 		facing = facing * -1
 	
 	motion.y = clamp(motion.y, -JUMP_FORCE, JUMP_FORCE)
+
+func set_hope(new_hope):
+	hope = clamp(new_hope, 0.1, 2)
+	update_hope()
+
+func update_hope():
+	torch.update_hope(hope)
 
 func play_anim(animation):
 	if anim.current_animation != animation:
