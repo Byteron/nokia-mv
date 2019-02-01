@@ -2,6 +2,7 @@ class_name Player extends KinematicBody2D
 
 const GRAVITY = 180
 const UP = Vector2(0, -1)
+const DOWN = Vector2(0, 1)
 
 const SNEAK_SPEED = 10
 const WALK_SPEED = 30
@@ -24,10 +25,10 @@ func _process(delta):
 
 func update_motion(delta):
 	update_direction()
-	move()
-	move_and_slide_with_snap(motion, Vector2(0, 1), UP)
-	fall(delta)
 	update_facing()
+	fall(delta)
+	move()
+	move_and_slide_with_snap(motion, DOWN, UP)
 
 func update_direction():
 	var left = Input.is_action_pressed("ui_left")
