@@ -1,4 +1,4 @@
-extends KinematicBody2D
+class_name Player extends KinematicBody2D
 
 const GRAVITY = 2000
 const UP = Vector2(0, -1)
@@ -15,6 +15,9 @@ var dashing = false
 
 onready var skin = $Skin
 
+onready var torch = $Torch
+onready var occluder = $LightOccluder2D
+
 func _process(delta):
 	update_motion(delta)
 
@@ -27,8 +30,13 @@ func update_motion(delta):
 func update_facing():
 	if facing == 1:
 		skin.flip_h = false
+		torch.position.x = 3
+		occluder.scale = Vector2(1, 1)
+		
 	else:
 		skin.flip_h = true
+		torch.position.x = -3
+		occluder.scale = Vector2(-1, 1)
 		
 func move():
 	if Input.is_action_pressed("run"):

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://source/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://graphics/images/spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://source/player/Torch.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -9,27 +10,12 @@ extents = Vector2( 2, 3 )
 
 [sub_resource type="OccluderPolygon2D" id=2]
 
-cull_mode = 1
-polygon = PoolVector2Array( -2, -2, 2, -2, 2, 4, -2, 4 )
+closed = false
+polygon = PoolVector2Array( -2, 4, 0, 4, 0, -1, -2, -2, -2, 4 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 2
 script = ExtResource( 1 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, -6 )
-current = true
-limit_left = 0
-limit_top = 0
-limit_right = 640
-limit_bottom = 200
-drag_margin_h_enabled = false
-drag_margin_v_enabled = false
-
-[node name="Skin" type="Sprite" parent="."]
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 16, 0, 8, 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1 )
@@ -37,4 +23,18 @@ shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource( 2 )
+
+[node name="Skin" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 8, 8 )
+
+[node name="Torch" parent="." instance=ExtResource( 3 )]
+position = Vector2( 3, -3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -6 )
+current = true
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
 
