@@ -4,9 +4,7 @@ const GRAVITY = 196
 const UP = Vector2(0, -1)
 const DOWN = Vector2(0, 1)
 
-const SNEAK_SPEED = 12
 const WALK_SPEED = 32
-const RUN_SPEED = 64
 const JUMP_FORCE = 96
 
 var direction = Vector2()
@@ -33,7 +31,8 @@ func update_motion(delta):
 	update_direction()
 	update_facing()
 	fall(delta)
-	move()
+	jump()
+	walk()
 	move_and_slide_with_snap(motion, DOWN, UP)
 
 func update_direction():
@@ -42,44 +41,26 @@ func update_direction():
 	direction.x = int(right) - int(left)
 
 func update_facing():
+	
 	if facing == 1:
 		skin.flip_h = false
 		torch.position.x = 2
-		
+	
 	else:
 		skin.flip_h = true
 		torch.position.x = -3
 		
-func move():
-	if Input.is_action_pressed("run"):
-		run(RUN_SPEED)
-		jump()
-	elif Input.is_action_pressed("sneak"):
-		run(SNEAK_SPEED)
-		dash()
-	else:
-		run(WALK_SPEED)
-		jump()
-	
-func run(MAX_SPEED):
-	if direction.x and not dashing:
-		
+func walk():
+
+	if direction.x:
 		play_anim("walk")
-		motion.x = MAX_SPEED * direction.x
+		motion.x = WALK_SPEED * direction.x
 		facing = direction.x
 	
-	elif not dashing:
+	else:
 		play_anim("idle")
 		motion.x = 0
 
-func dash():
-	var dash = Input.is_action_just_pressed("ui_accept")
-	
-	if dash and is_on_floor() and not dashing:
-		dashing = true
-		skin.scale = Vector2(1, 0.5)
-		motion.x = facing * JUMP_FORCE * 1.2
-	
 func jump():
 	var jump = Input.is_action_just_pressed("ui_accept")
 	
