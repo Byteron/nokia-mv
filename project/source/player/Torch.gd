@@ -9,7 +9,7 @@ onready var light = $Light2D
 func _process(delta):
 	if tick(delta):
 		randomize()
-		var new_scale = rand_range(1.6, 1.8)
+		var new_scale = rand_range(0.95, 1.05)
 		light.texture_scale = new_scale
 
 func tick(delta):
