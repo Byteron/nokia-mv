@@ -51,7 +51,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=4]
 
 resource_name = "walk"
-length = 1.2
+length = 0.9
 loop = true
 step = 0.3
 tracks/0/type = "value"
@@ -73,10 +73,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 0.9, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 3, 4 ]
+"values": [ 0, 1, 2, 3, 3 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Skin:hframes")
@@ -108,8 +108,9 @@ position = Vector2( 0, -1 )
 shape = SubResource( 1 )
 
 [node name="Skin" type="Sprite" parent="."]
-texture = ExtResource( 2 )
-hframes = 5
+texture = ExtResource( 3 )
+hframes = 4
+frame = 1
 
 [node name="Torch" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2, -4 )
