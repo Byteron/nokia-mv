@@ -16,11 +16,9 @@ var dashing = false
 onready var skin = $Skin
 
 func _process(delta):
-	$Corshair.look_at(get_global_mouse_position())
 	update_motion(delta)
 
 func update_motion(delta):
-	shoot()
 	move()
 	move_and_slide_with_snap(motion, Vector2(0, 1), UP)
 	fall(delta)
@@ -31,13 +29,6 @@ func update_facing():
 		skin.flip_h = false
 	else:
 		skin.flip_h = true
-
-func shoot():
-	if Input.is_action_just_pressed("shoot"):
-		var projectile = load("res://source/player/Pojectile.tscn").instance()
-		projectile.initialize(800)
-		projectile.position = Vector2(0, -4)
-		add_child(projectile)
 		
 func move():
 	if Input.is_action_pressed("run"):
