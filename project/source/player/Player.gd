@@ -1,12 +1,12 @@
 class_name Player extends KinematicBody2D
 
-const GRAVITY = 2000
+const GRAVITY = 180
 const UP = Vector2(0, -1)
 
-const SNEAK_SPEED = 20
-const WALK_SPEED = 60
-const RUN_SPEED = 110
-const JUMP_FORCE = 340
+const SNEAK_SPEED = 10
+const WALK_SPEED = 30
+const RUN_SPEED = 60
+const JUMP_FORCE = 80
 
 var direction = Vector2()
 var motion = Vector2()
@@ -18,7 +18,6 @@ onready var anim = $AnimationPlayer
 onready var skin = $Skin
 
 onready var torch = $Torch
-onready var occluder = $LightOccluder2D
 
 func _process(delta):
 	update_motion(delta)
@@ -38,13 +37,11 @@ func update_direction():
 func update_facing():
 	if facing == 1:
 		skin.flip_h = false
-		torch.position.x = 3
-		occluder.scale = Vector2(1, 1)
+		torch.position.x = 2
 		
 	else:
 		skin.flip_h = true
 		torch.position.x = -3
-		occluder.scale = Vector2(-1, 1)
 		
 func move():
 	if Input.is_action_pressed("run"):
@@ -88,7 +85,8 @@ func jump():
 func fall(delta):
 	
 	if is_on_ceiling():
-		motion.y = -10
+		motion.y = 0
+		print(motion)
 	
 	if is_on_floor() :
 		motion.y = 0

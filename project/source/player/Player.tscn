@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://source/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://graphics/images/player/player_idle.png" type="Texture" id=2]
@@ -93,12 +93,7 @@ tracks/2/keys = {
 
 [sub_resource type="RectangleShape2D" id=1]
 
-extents = Vector2( 2, 3 )
-
-[sub_resource type="OccluderPolygon2D" id=2]
-
-closed = false
-polygon = PoolVector2Array( -2, 4, 0, 4, 0, -1, -2, -2, -2, 4 )
+extents = Vector2( 4, 4 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 2
@@ -109,20 +104,15 @@ anims/idle = SubResource( 3 )
 anims/walk = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource( 1 )
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-visible = false
 position = Vector2( 0, -1 )
-occluder = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Skin" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 hframes = 5
 
 [node name="Torch" parent="." instance=ExtResource( 4 )]
-position = Vector2( 3, -5 )
+position = Vector2( 2, -4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -6 )
