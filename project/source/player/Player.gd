@@ -15,7 +15,7 @@ var motion = Vector2()
 var facing = 1
 var dashing = false
 
-export(float, 0, 1) var hope = 1.0
+export(float, 0, 2) var hope = 1.0
 
 onready var anim = $AnimationPlayer
 onready var skin = $Skin

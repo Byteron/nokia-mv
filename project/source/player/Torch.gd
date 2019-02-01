@@ -13,7 +13,8 @@ func _process(delta):
 		randomize()
 		var scale_offset = rand_range(0.05, -0.05)
 		light.texture_scale = hope + scale_offset
-		particles.amount = hope * 10
+		if particles.amount != int(hope * 10):
+			particles.amount = int(hope * 10)
 		
 
 func update_hope(new_hope):

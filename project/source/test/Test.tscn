@@ -58,6 +58,7 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 16, 23 )
 collision_mask = 6
+hope = 0.5
 
 [node name="MinusOrb" parent="." instance=ExtResource( 3 )]
 position = Vector2( 87, 58 )
