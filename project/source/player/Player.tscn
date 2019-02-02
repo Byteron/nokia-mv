@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://source/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://graphics/images/player/player_fall.png" type="Texture" id=2]
 [ext_resource path="res://graphics/images/player/player_idle.png" type="Texture" id=3]
 [ext_resource path="res://graphics/images/player/player_jump.png" type="Texture" id=4]
-[ext_resource path="res://graphics/images/player/player_walk.png" type="Texture" id=5]
-[ext_resource path="res://source/player/Torch.tscn" type="PackedScene" id=6]
+[ext_resource path="res://graphics/images/player/player_land.png" type="Texture" id=5]
+[ext_resource path="res://graphics/images/player/player_walk.png" type="Texture" id=6]
+[ext_resource path="res://source/player/Torch.tscn" type="PackedScene" id=7]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=1]
 
 resource_name = "fall"
 length = 0.9
@@ -49,9 +50,8 @@ tracks/2/keys = {
 "values": [ 4 ]
 }
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 
-resource_name = "idle"
 length = 1.2
 loop = true
 step = 0.3
@@ -92,7 +92,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 3 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 
 resource_name = "jump"
 length = 1.2
@@ -134,9 +134,50 @@ tracks/2/keys = {
 "values": [ ExtResource( 4 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
 
-resource_name = "walk"
+resource_name = "land"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skin:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Skin:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Skin:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=5]
+
 length = 0.9
 loop = true
 step = 0.3
@@ -150,7 +191,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 5 ) ]
+"values": [ ExtResource( 6 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Skin:frame")
@@ -177,7 +218,7 @@ tracks/2/keys = {
 "values": [ 4 ]
 }
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=6]
 
 extents = Vector2( 3, 4 )
 
@@ -187,20 +228,22 @@ script = ExtResource( 1 )
 hope = 0.8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fall = SubResource( 5 )
-anims/idle = SubResource( 1 )
-anims/jump = SubResource( 4 )
-anims/walk = SubResource( 2 )
+anims/fall = SubResource( 1 )
+anims/idle = SubResource( 2 )
+anims/jump = SubResource( 3 )
+anims/land = SubResource( 4 )
+anims/walk = SubResource( 5 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
 polygon = PoolVector2Array( -2, 3, 2, 3, 2, -1, 4, -1, 4, -5, -4, -5, -4, -1, -2, -1, -2, 3 )
 
 [node name="Skin" type="Sprite" parent="."]
-texture = ExtResource( 2 )
-hframes = 4
+texture = ExtResource( 5 )
+hframes = 6
+frame = 4
 
-[node name="Torch" parent="." instance=ExtResource( 6 )]
+[node name="Torch" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2, -4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -214,7 +257,7 @@ drag_margin_v_enabled = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
 visible = false
 position = Vector2( 4, -1 )
-shape = SubResource( 3 )
+shape = SubResource( 6 )
 
 [connection signal="body_entered" from="HitArea" to="." method="_on_HitArea_body_entered"]
 [connection signal="body_exited" from="HitArea" to="." method="_on_HitArea_body_exited"]
