@@ -16,7 +16,6 @@ func _process(delta):
 		if particles.amount != int(hope * 10):
 			particles.amount = int(hope * 10)
 		
-
 func update_hope(new_hope):
 	hope = new_hope
 

@@ -13,6 +13,8 @@ var motion = Vector2()
 var facing = 1
 var dashing = false
 
+var enemy_in_reach = null
+
 export(float, 0, 2) var hope = 1.0
 
 onready var anim = $AnimationPlayer
@@ -102,3 +104,10 @@ func update_hope():
 func play_anim(animation):
 	if anim.current_animation != animation:
 		anim.play(animation)
+
+func _on_HitArea_body_entered(body):
+	if body.is_in_group("Enemy"):
+		enemy_in_reach = body
+
+func _on_HitArea_body_exited(body):
+	enemy_in_reach = null
