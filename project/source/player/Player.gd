@@ -4,7 +4,7 @@ const GRAVITY = 196
 const UP = Vector2(0, -1)
 const DOWN = Vector2(0, 1)
 
-const WALK_SPEED = 32
+const WALK_SPEED = 28
 const JUMP_FORCE = 96
 
 var direction = Vector2()
