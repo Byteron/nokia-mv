@@ -4,7 +4,7 @@ const GRAVITY = 196
 const UP = Vector2(0, -1)
 const DOWN = Vector2(0, 1)
 
-const WALK_SPEED = 28
+const WALK_SPEED = 32
 const JUMP_FORCE = 96
 
 var direction = Vector2()
@@ -33,8 +33,8 @@ func update_motion(delta):
 	update_direction()
 	update_facing()
 	fall(delta)
-	jump()
 	walk()
+	jump()
 	move_and_slide_with_snap(motion, DOWN, UP)
 
 func update_direction():
@@ -55,22 +55,27 @@ func update_facing():
 func walk():
 
 	if direction.x:
-		play_anim("walk")
+		if is_on_floor():
+			play_anim("walk")
 		motion.x = WALK_SPEED * direction.x
 		facing = direction.x
 	
 	else:
-		play_anim("idle")
+		if is_on_floor():
+			play_anim("idle")
 		motion.x = 0
 
 func jump():
 	var jump = Input.is_action_just_pressed("ui_accept")
 	
 	if jump and is_on_floor():
+		play_anim("jump")
 		motion.y = -JUMP_FORCE
 	
-	if not is_on_ceiling()and not is_on_floor():
-		motion.x *= 1.4
+	if not is_on_ceiling() and not is_on_floor():
+		# motion.x *= 1.4
+		if motion.y > 0:
+			play_anim("fall")
 
 func fall(delta):
 	
@@ -103,6 +108,7 @@ func update_hope():
 
 func play_anim(animation):
 	if anim.current_animation != animation:
+		print("Play: ", animation)
 		anim.play(animation)
 
 func _on_HitArea_body_entered(body):
