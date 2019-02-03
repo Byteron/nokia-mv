@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/heartbeat_critical_test.ogg-809f065ca25fc0de0951689eb5de3adf.oggstr"
+
+[deps]
+
+source_file="res://audio/sounds/heartbeat_critical_test.ogg"
+dest_files=[ "res://.import/heartbeat_critical_test.ogg-809f065ca25fc0de0951689eb5de3adf.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://source/player/Player.gd" type="Script" id=1]
-[ext_resource path="res://graphics/images/player/player_fall.png" type="Texture" id=2]
-[ext_resource path="res://graphics/images/player/player_idle.png" type="Texture" id=3]
-[ext_resource path="res://graphics/images/player/player_jump.png" type="Texture" id=4]
-[ext_resource path="res://graphics/images/player/player_land.png" type="Texture" id=5]
-[ext_resource path="res://graphics/images/player/player_walk.png" type="Texture" id=6]
-[ext_resource path="res://source/player/Torch.tscn" type="PackedScene" id=7]
+[ext_resource path="res://audio/sounds/heartbeat_test.ogg" type="AudioStream" id=2]
+[ext_resource path="res://graphics/images/player/player_fall.png" type="Texture" id=3]
+[ext_resource path="res://graphics/images/player/player_idle.png" type="Texture" id=4]
+[ext_resource path="res://graphics/images/player/player_jump.png" type="Texture" id=5]
+[ext_resource path="res://graphics/images/player/player_land.png" type="Texture" id=6]
+[ext_resource path="res://graphics/images/player/player_walk.png" type="Texture" id=7]
+[ext_resource path="res://source/player/Torch.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -23,7 +24,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 2 ) ]
+"values": [ ExtResource( 3 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Skin:frame")
@@ -89,7 +90,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 3 ) ]
+"values": [ ExtResource( 4 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -131,7 +132,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 4 ) ]
+"values": [ ExtResource( 5 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -149,7 +150,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 5 ) ]
+"values": [ ExtResource( 6 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Skin:hframes")
@@ -191,7 +192,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 6 ) ]
+"values": [ ExtResource( 7 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Skin:frame")
@@ -227,6 +228,11 @@ collision_mask = 2
 script = ExtResource( 1 )
 hope = 0.8
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -15.0
+autoplay = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fall = SubResource( 1 )
 anims/idle = SubResource( 2 )
@@ -239,11 +245,11 @@ visible = false
 polygon = PoolVector2Array( -2, 3, 2, 3, 2, -1, 4, -1, 4, -5, -4, -5, -4, -1, -2, -1, -2, 3 )
 
 [node name="Skin" type="Sprite" parent="."]
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 hframes = 6
 frame = 4
 
-[node name="Torch" parent="." instance=ExtResource( 7 )]
+[node name="Torch" parent="." instance=ExtResource( 8 )]
 position = Vector2( 2, -4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

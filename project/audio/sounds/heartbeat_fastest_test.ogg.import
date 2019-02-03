@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/heartbeat_fastest_test.ogg-32e6e57ce128a07759ba7583bb9c3921.oggstr"
+
+[deps]
+
+source_file="res://audio/sounds/heartbeat_fastest_test.ogg"
+dest_files=[ "res://.import/heartbeat_fastest_test.ogg-32e6e57ce128a07759ba7583bb9c3921.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
