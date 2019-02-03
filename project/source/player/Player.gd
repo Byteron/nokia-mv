@@ -102,7 +102,11 @@ func fall(delta):
 	motion.y = clamp(motion.y, -JUMP_FORCE, JUMP_FORCE)
 
 func set_hope(new_hope):
-	hope = clamp(new_hope, 0.1, 2)
+	hope = clamp(new_hope, 0, 2)
+
+	if hope < 0.1:
+		get_tree().reload_current_scene()
+
 	play_heartbeat(0.1, 0.2, Global.heartbeat_critical)
 	play_heartbeat(0.2, 0.4, Global.heartbeat_fastest)
 	play_heartbeat(0.4, 0.8, Global.heartbeat_faster)
@@ -122,7 +126,6 @@ func play_heartbeat(minimum, maximum, sound):
 		if not sound == $AudioStreamPlayer.stream:
 			$AudioStreamPlayer.stream = sound
 			$AudioStreamPlayer.play()
-			
 
 func _on_HitArea_body_entered(body):
 	if body.is_in_group("Enemy"):
