@@ -2,6 +2,8 @@
 
 Project Name: Get Out
 
+![Get Out mockup](https://imgur.com/dJrZ41d)
+
 Get Out is a dark, nightmarish side scroller about a boy who wakes up in a cave after an incident and faces his problems and anxieties, fights them with his hope and tries to escape the cave before the light of hope that shines within him fades away for good.
 
 Mechanics
