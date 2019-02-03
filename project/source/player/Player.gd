@@ -55,13 +55,13 @@ func update_facing():
 func walk():
 
 	if direction.x:
-		if is_on_floor():
+		if is_on_floor() and not anim.current_animation == "land":
 			play_anim("walk")
 		motion.x = WALK_SPEED * direction.x
 		facing = direction.x
 	
 	else:
-		if is_on_floor():
+		if is_on_floor() and not anim.current_animation == "land":
 			play_anim("idle")
 		motion.x = 0
 
@@ -83,7 +83,9 @@ func fall(delta):
 		motion.y = 0
 		print(motion)
 	
-	if is_on_floor() :
+	if is_on_floor():
+		if anim.current_animation == "fall":
+			play_anim("land")
 		motion.y = 0
 	
 	else:
