@@ -108,7 +108,7 @@ shape = SubResource( 4 )
 [node name="Sprite" type="Sprite" parent="HangingSpider"]
 texture = ExtResource( 2 )
 hframes = 7
-frame = 2
+frame = 1
 
 [connection signal="body_entered" from="HangingSpider" to="." method="_on_Spider_body_entered"]
 [connection signal="body_exited" from="HangingSpider" to="." method="_on_Spider_body_exited"]
