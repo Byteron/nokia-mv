@@ -10,7 +10,7 @@ length = 16.0
 loop = true
 step = 0.25
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("Spider:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 60, 0 ), Vector2( -60, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/path = NodePath("Spider/Sprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -34,7 +34,7 @@ tracks/1/keys = {
 "values": [ false, true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("AnimAnim:current_animation")
+tracks/2/path = NodePath("Spider/AnimAnim:current_animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -109,7 +109,6 @@ shape = SubResource( 4 )
 [node name="Sprite" type="Sprite" parent="Spider"]
 texture = ExtResource( 2 )
 hframes = 10
-frame = 2
 
 [connection signal="body_entered" from="Spider" to="." method="_on_Spider_body_entered"]
 [connection signal="body_exited" from="Spider" to="." method="_on_Spider_body_exited"]
