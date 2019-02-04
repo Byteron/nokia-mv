@@ -87,7 +87,6 @@ func fall(delta):
 	
 	if is_on_ceiling():
 		motion.y = 0
-		print(motion)
 	
 	if is_on_floor():
 		if anim.current_animation == "fall":
@@ -124,7 +123,6 @@ func update_hope():
 
 func play_anim(animation):
 	if anim.current_animation != animation:
-		print("Play: ", animation)
 		anim.play(animation)
 
 func play_heartbeat(minimum, maximum, sound):

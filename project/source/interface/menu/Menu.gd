@@ -33,10 +33,8 @@ func _input(event):
 		if active_button == 0:
 			get_tree().change_scene(Global.Level1)
 		if active_button == 1:
-			get_tree().change_scene(Global.Controls)
-		if active_button == 2:
 			get_tree().quit()
-
+			
 func change_active_button(index):
 	buttons[active_button].add_color_override("font_color", DARK)
 	active_button = index

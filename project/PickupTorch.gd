@@ -7,5 +7,4 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	body.set_hope(body.hope + value)
-	print("Hope: ", body.hope)
 	queue_free()

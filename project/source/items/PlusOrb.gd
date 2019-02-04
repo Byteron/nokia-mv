@@ -9,7 +9,6 @@ var value = 0.1
 func _process(delta):
 	if player and tick(delta):
 		player.set_hope(player.hope + value)
-		print("Hope: ", player.hope)
 
 func tick(delta):
 	time += delta

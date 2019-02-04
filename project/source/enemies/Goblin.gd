@@ -34,7 +34,6 @@ func _process(delta):
 	
 	if player_goblin and tick(delta):
 		player_goblin.set_hope(player_goblin.hope - value)
-		print("Hope: ", player_goblin.hope)
 
 func attack():
 	if player_goblin and Input.is_action_just_pressed("ui_down"):
@@ -54,7 +53,6 @@ func hurt():
 
 func play_anim(animation):
 	if anim.current_animation != animation:
-		print("Play: ", animation)
 		anim.play(animation)
 
 func _on_Reach_body_entered(body):
