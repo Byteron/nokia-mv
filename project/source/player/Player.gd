@@ -15,7 +15,7 @@ var dashing = false
 
 var enemy_in_reach = null
 
-export(float, 0, 2) var hope = 1.0
+export(float, 0, 1.4) var hope = 1.0
 
 onready var anim = $AnimationPlayer
 onready var skin = $Skin
@@ -104,7 +104,7 @@ func fall(delta):
 	motion.y = clamp(motion.y, -JUMP_FORCE, JUMP_FORCE)
 
 func set_hope(new_hope):
-	hope = clamp(new_hope, 0, 2)
+	hope = clamp(new_hope, 0, 1.4)
 
 	if hope < 0.1:
 		get_tree().reload_current_scene()
@@ -112,7 +112,7 @@ func set_hope(new_hope):
 	play_heartbeat(0.1, 0.2, Global.heartbeat_critical)
 	play_heartbeat(0.2, 0.4, Global.heartbeat_fastest)
 	play_heartbeat(0.4, 0.8, Global.heartbeat_faster)
-	play_heartbeat(0.8, 2.0, Global.heartbeat_normal)
+	play_heartbeat(0.8, 1.4, Global.heartbeat_normal)
 	update_hope()
 
 func update_hope():
