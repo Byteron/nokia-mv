@@ -451,7 +451,6 @@ position = Vector2( 119, 37 )
 position = Vector2( 508, 29 )
 
 [node name="Spiders" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Spider" parent="Spiders" instance=ExtResource( 4 )]
 position = Vector2( 101, 164 )

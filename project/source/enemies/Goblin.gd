@@ -1,8 +1,13 @@
 extends Node2D
 
+const TIMEOUT = 1
 const SPEED = 25
 
 var player = null
+var player_goblin = null
+
+var time = 0
+var value = 0.1
 
 onready var goblin = $Goblin
 onready var sprite = $Goblin/Sprite
@@ -23,6 +28,17 @@ func _process(delta):
 			play_anim("idle")
 	else:
 		play_anim("idle")
+	
+	if player_goblin and tick(delta):
+		player_goblin.set_hope(player_goblin.hope - value)
+		print("Hope: ", player_goblin.hope)
+
+func tick(delta):
+	time += delta
+	if time > TIMEOUT:
+		time = 0
+		return true
+	return false
 
 func play_anim(animation):
 	if anim.current_animation != animation:
@@ -36,3 +52,11 @@ func _on_Reach_body_entered(body):
 func _on_Reach_body_exited(body):
 	if body == Global.player:
 		player = null
+
+func _on_Goblin_body_entered(body):
+	if body == Global.player:
+		player_goblin = body
+
+func _on_Goblin_body_exited(body):
+	if body == Global.player:
+		player_goblin = null
