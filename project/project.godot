@@ -26,7 +26,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Nokia MV"
+config/name="Get Out"
 run/main_scene="res://source/interface/menu/Menu.tscn"
 config/icon="res://icon.png"
 
