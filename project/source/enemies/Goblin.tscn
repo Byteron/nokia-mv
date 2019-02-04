@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://source/enemies/Goblin.gd" type="Script" id=1]
+[ext_resource path="res://graphics/images/enemies/goblin.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "walk"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 12 ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+
+extents = Vector2( 7, 6 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+extents = Vector2( 51, 12 )
+
+[node name="Goblin" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Goblin" type="Area2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Goblin"]
+anims/idle = SubResource( 1 )
+anims/walk = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goblin"]
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Goblin"]
+texture = ExtResource( 2 )
+hframes = 13
+frame = 10
+
+[node name="Reach" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reach"]
+position = Vector2( 0, -6 )
+shape = SubResource( 4 )
+
+[connection signal="body_entered" from="Reach" to="." method="_on_Reach_body_entered"]
+[connection signal="body_exited" from="Reach" to="." method="_on_Reach_body_exited"]
