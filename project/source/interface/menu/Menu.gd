@@ -11,6 +11,7 @@ var enter
 
 onready var buttons = [
 	$CenterContainer/VBoxContainer/Buttons/Play,
+	# $CenterContainer/VBoxContainer/Buttons/Controls,
 	$CenterContainer/VBoxContainer/Buttons/Exit
 ]
 
@@ -23,15 +24,17 @@ func _input(event):
 	down = Input.is_action_just_pressed("ui_down")
 	enter = Input.is_action_just_pressed("ui_accept")
 	if up:
-		var index = int(active_button + 1) % buttons.size()
+		var index = int(active_button - 1) % buttons.size()
 		change_active_button(index)
 	if down:
-		var index = int(active_button - 1) % buttons.size()
+		var index = int(active_button + 1) % buttons.size()
 		change_active_button(index)
 	if enter:
 		if active_button == 0:
 			get_tree().change_scene(Global.Level1)
 		if active_button == 1:
+			get_tree().change_scene(Global.Controls)
+		if active_button == 2:
 			get_tree().quit()
 
 func change_active_button(index):

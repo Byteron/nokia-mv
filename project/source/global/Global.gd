@@ -4,9 +4,9 @@ extends Node2D
 var player = null
 
 # Scenes
-var Menu = "res://source/interface/Menu.tscn"
+var Menu = "res://source/interface/menu/Menu.tscn"
 var Level1 = "res://source/levels/Level1.tscn"
-var Victory = "res://source/levels/Level1.tscn"
+var Victory = "res://source/interface/menu/Victory.tscn"
 
 # Resources
 var heartbeat_normal = load("res://audio/sounds/heartbeat_test.ogg")

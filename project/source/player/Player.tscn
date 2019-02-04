@@ -286,6 +286,7 @@ polygon = PoolVector2Array( -2, 3, 2, 3, 2, -1, 4, -1, 4, -5, -4, -5, -4, -1, -2
 [node name="Skin" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 hframes = 5
+frame = 4
 
 [node name="Torch" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2, -4 )

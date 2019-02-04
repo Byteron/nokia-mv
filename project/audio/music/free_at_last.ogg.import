@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/free_at_last.ogg-bb5f40be71113f82dbb34d15358951e5.oggstr"
+
+[deps]
+
+source_file="res://audio/music/free_at_last.ogg"
+dest_files=[ "res://.import/free_at_last.ogg-bb5f40be71113f82dbb34d15358951e5.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
