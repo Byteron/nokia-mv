@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://source/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://audio/sounds/heartbeat_test.ogg" type="AudioStream" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://graphics/images/player/player_land.png" type="Texture" id=6]
 [ext_resource path="res://graphics/images/player/player_walk.png" type="Texture" id=7]
 [ext_resource path="res://source/player/Torch.tscn" type="PackedScene" id=8]
+[ext_resource path="res://source/player/Backpack.gd" type="Script" id=9]
 
 [sub_resource type="Animation" id=1]
 
@@ -264,6 +265,11 @@ drag_margin_v_enabled = false
 visible = false
 position = Vector2( 4, -1 )
 shape = SubResource( 6 )
+
+[node name="Backpack" type="Node" parent="."]
+script = ExtResource( 9 )
+
+[node name="Keys" type="Node" parent="Backpack"]
 
 [connection signal="body_entered" from="HitArea" to="." method="_on_HitArea_body_entered"]
 [connection signal="body_exited" from="HitArea" to="." method="_on_HitArea_body_exited"]

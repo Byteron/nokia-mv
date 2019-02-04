@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/door.png-450abc8a081b5a80aaac2b017bfd5904.stex"
+path="res://.import/door.png-d6986a33012dc055a755b8bba2f3438e.stex"
 
 [deps]
 
-source_file="res://graphics/images/terrain/door.png"
-dest_files=[ "res://.import/door.png-450abc8a081b5a80aaac2b017bfd5904.stex" ]
+source_file="res://graphics/images/items/door.png"
+dest_files=[ "res://.import/door.png-d6986a33012dc055a755b8bba2f3438e.stex" ]
 
 [params]
 

@@ -22,6 +22,8 @@ onready var skin = $Skin
 
 onready var torch = $Torch
 
+onready var backpack = $Backpack
+
 func _ready():
 	Global.player = self
 	update_hope()
