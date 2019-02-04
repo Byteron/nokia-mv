@@ -37,7 +37,12 @@ func update_motion(delta):
 	fall(delta)
 	walk()
 	jump()
+	attack()
 	move_and_slide_with_snap(motion, DOWN, UP)
+
+func attack():
+	if Input.is_action_just_pressed("ui_down"):
+		play_anim("attack")
 
 func update_direction():
 	var left = Input.is_action_pressed("ui_left")

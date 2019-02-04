@@ -38,8 +38,6 @@ func _process(delta):
 
 func attack():
 	if player_goblin and Input.is_action_just_pressed("ui_down"):
-		player_goblin.play_anim("attack")
-		print("attack!")
 		hurt()
 
 func tick(delta):
