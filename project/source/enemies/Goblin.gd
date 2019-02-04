@@ -3,6 +3,8 @@ extends Node2D
 const TIMEOUT = 1
 const SPEED = 25
 
+var health = 3
+
 var player = null
 var player_goblin = null
 
@@ -28,10 +30,17 @@ func _process(delta):
 			play_anim("idle")
 	else:
 		play_anim("idle")
+	attack()
 	
 	if player_goblin and tick(delta):
 		player_goblin.set_hope(player_goblin.hope - value)
 		print("Hope: ", player_goblin.hope)
+
+func attack():
+	if player_goblin and Input.is_action_just_pressed("ui_down") and not player_goblin.anim.current_animation == "attack":
+		player_goblin.play_anim("attack")
+		print("attack!")
+		hurt()
 
 func tick(delta):
 	time += delta
@@ -39,6 +48,11 @@ func tick(delta):
 		time = 0
 		return true
 	return false
+
+func hurt():
+	health -= 1
+	if health <= 0:
+		queue_free()
 
 func play_anim(animation):
 	if anim.current_animation != animation:

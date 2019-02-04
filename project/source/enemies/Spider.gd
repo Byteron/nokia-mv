@@ -4,7 +4,7 @@ const TIMEOUT = 1
 var player = null
 
 var time = 0
-var value = 0.1
+var value = 0.2
 
 func _process(delta):
 	if player and tick(delta):

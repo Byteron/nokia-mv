@@ -93,10 +93,8 @@ script = ExtResource( 1 )
 autoplay = "walk"
 anims/walk = SubResource( 1 )
 
-[node name="HangingSpider" type="Area2D" parent="." groups=[
-"Enemy",
-]]
-collision_layer = 8
+[node name="HangingSpider" type="Area2D" parent="."]
+collision_layer = 16
 
 [node name="AnimAnim" type="AnimationPlayer" parent="HangingSpider"]
 anims/idle = SubResource( 2 )

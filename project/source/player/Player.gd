@@ -13,7 +13,7 @@ var motion = Vector2()
 var facing = 1
 var dashing = false
 
-var enemy_in_reach = null
+var goblin = null
 
 export(float, 0, 1.4) var hope = 1.0
 
@@ -57,18 +57,18 @@ func update_facing():
 func walk():
 
 	if direction.x:
-		if is_on_floor() and not anim.current_animation == "land":
+		if is_on_floor() and not anim.current_animation == "land" and not anim.current_animation == "attack":
 			play_anim("walk")
 		motion.x = WALK_SPEED * direction.x
 		facing = direction.x
 	
 	else:
-		if is_on_floor() and not anim.current_animation == "land":
+		if is_on_floor() and not anim.current_animation == "land" and not anim.current_animation == "attack":
 			play_anim("idle")
 		motion.x = 0
 
 func jump():
-	var jump = Input.is_action_just_pressed("ui_accept")
+	var jump = Input.is_action_just_pressed("ui_up")
 	
 	if jump and is_on_floor():
 		play_anim("jump")
@@ -78,7 +78,6 @@ func jump():
 		# motion.x *= 1.4
 		if motion.y > 0:
 			play_anim("fall")
-
 func fall(delta):
 	
 	if is_on_ceiling():
@@ -128,10 +127,3 @@ func play_heartbeat(minimum, maximum, sound):
 		if not sound == $AudioStreamPlayer.stream:
 			$AudioStreamPlayer.stream = sound
 			$AudioStreamPlayer.play()
-
-func _on_HitArea_body_entered(body):
-	if body.is_in_group("Enemy"):
-		enemy_in_reach = body
-
-func _on_HitArea_body_exited(body):
-	enemy_in_reach = null
