@@ -1,13 +1,14 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://source/test/Test.gd" type="Script" id=1]
 [ext_resource path="res://graphics/images/terrain/cave_sheet-2.png" type="Texture" id=2]
 [ext_resource path="res://source/enemies/Spider.tscn" type="PackedScene" id=3]
-[ext_resource path="res://source/enemies/Goblin.tscn" type="PackedScene" id=4]
-[ext_resource path="res://source/items/PickupTorch.tscn" type="PackedScene" id=5]
-[ext_resource path="res://source/items/Key.tscn" type="PackedScene" id=6]
-[ext_resource path="res://source/items/Door.tscn" type="PackedScene" id=7]
-[ext_resource path="res://source/player/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://source/enemies/HangingSpider.tscn" type="PackedScene" id=4]
+[ext_resource path="res://source/enemies/Goblin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://source/items/PickupTorch.tscn" type="PackedScene" id=6]
+[ext_resource path="res://source/items/Key.tscn" type="PackedScene" id=7]
+[ext_resource path="res://source/items/Door.tscn" type="PackedScene" id=8]
+[ext_resource path="res://source/player/Player.tscn" type="PackedScene" id=9]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 
@@ -427,61 +428,67 @@ position = Vector2( 435, 20 )
 [node name="Spider2" parent="Spiders" instance=ExtResource( 3 )]
 position = Vector2( 161, 261 )
 
+[node name="HangingSpider" parent="Spiders" instance=ExtResource( 4 )]
+position = Vector2( 237, 72 )
+
+[node name="HangingSpider2" parent="Spiders" instance=ExtResource( 4 )]
+position = Vector2( 491, 152 )
+
 [node name="Goblins" type="Node2D" parent="."]
 editor/display_folded = true
 
-[node name="Goblin" parent="Goblins" instance=ExtResource( 4 )]
+[node name="Goblin" parent="Goblins" instance=ExtResource( 5 )]
 position = Vector2( 169, 218 )
 
-[node name="Goblin2" parent="Goblins" instance=ExtResource( 4 )]
+[node name="Goblin2" parent="Goblins" instance=ExtResource( 5 )]
 position = Vector2( 139, 106 )
 
 [node name="Torches" type="Node2D" parent="."]
 editor/display_folded = true
 
-[node name="PickupTorch" parent="Torches" instance=ExtResource( 5 )]
+[node name="PickupTorch" parent="Torches" instance=ExtResource( 6 )]
 position = Vector2( 181, 270 )
 
-[node name="PickupTorch2" parent="Torches" instance=ExtResource( 5 )]
+[node name="PickupTorch2" parent="Torches" instance=ExtResource( 6 )]
 position = Vector2( 394, 269 )
 
-[node name="PickupTorch3" parent="Torches" instance=ExtResource( 5 )]
+[node name="PickupTorch3" parent="Torches" instance=ExtResource( 6 )]
 position = Vector2( 464, 238 )
 
-[node name="PickupTorch4" parent="Torches" instance=ExtResource( 5 )]
+[node name="PickupTorch4" parent="Torches" instance=ExtResource( 6 )]
 position = Vector2( 503, 245 )
 
-[node name="PickupTorch5" parent="Torches" instance=ExtResource( 5 )]
+[node name="PickupTorch5" parent="Torches" instance=ExtResource( 6 )]
 position = Vector2( 507, 190 )
 
-[node name="PickupTorch6" parent="Torches" instance=ExtResource( 5 )]
+[node name="PickupTorch6" parent="Torches" instance=ExtResource( 6 )]
 position = Vector2( 386, 133 )
 
-[node name="PickupTorch7" parent="Torches" instance=ExtResource( 5 )]
+[node name="PickupTorch7" parent="Torches" instance=ExtResource( 6 )]
 position = Vector2( 274, 141 )
 
-[node name="PickupTorch8" parent="Torches" instance=ExtResource( 5 )]
+[node name="PickupTorch8" parent="Torches" instance=ExtResource( 6 )]
 position = Vector2( 164, 109 )
 
-[node name="PickupTorch9" parent="Torches" instance=ExtResource( 5 )]
+[node name="PickupTorch9" parent="Torches" instance=ExtResource( 6 )]
 position = Vector2( 119, 37 )
 
-[node name="PickupTorch10" parent="Torches" instance=ExtResource( 5 )]
+[node name="PickupTorch10" parent="Torches" instance=ExtResource( 6 )]
 position = Vector2( 508, 29 )
 
 [node name="Keys" type="Node2D" parent="."]
 editor/display_folded = true
 
-[node name="Key" parent="Keys" instance=ExtResource( 6 )]
+[node name="Key" parent="Keys" instance=ExtResource( 7 )]
 position = Vector2( 11, 266 )
 
 [node name="Doors" type="Node2D" parent="."]
 editor/display_folded = true
 
-[node name="Door" parent="Doors" instance=ExtResource( 7 )]
+[node name="Door" parent="Doors" instance=ExtResource( 8 )]
 position = Vector2( 149, 240 )
 
-[node name="Player" parent="." instance=ExtResource( 8 )]
+[node name="Player" parent="." instance=ExtResource( 9 )]
 position = Vector2( 23, 254 )
 collision_mask = 6
 hope = 1.0
