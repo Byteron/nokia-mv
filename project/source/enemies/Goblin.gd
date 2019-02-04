@@ -37,7 +37,7 @@ func _process(delta):
 		print("Hope: ", player_goblin.hope)
 
 func attack():
-	if player_goblin and Input.is_action_just_pressed("ui_down") and not player_goblin.anim.current_animation == "attack":
+	if player_goblin and Input.is_action_just_pressed("ui_down"):
 		player_goblin.play_anim("attack")
 		print("attack!")
 		hurt()

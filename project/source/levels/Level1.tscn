@@ -434,9 +434,6 @@ position = Vector2( 101, 164 )
 [node name="Spider3" parent="Spiders" instance=ExtResource( 4 )]
 position = Vector2( 340, 260 )
 
-[node name="Spider2" parent="Spiders" instance=ExtResource( 4 )]
-position = Vector2( 161, 261 )
-
 [node name="Goblins" type="Node2D" parent="."]
 
 [node name="Goblin" parent="Goblins" instance=ExtResource( 5 )]
